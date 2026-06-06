@@ -1,7 +1,7 @@
 #### Prepared by: Hüseyin UZUNYAYLA / OgnitorenKs
 - ► Mail: ognitorenks@gmail.com
 - ► Site: [https://ognitorenks.blospot.com](https://ognitorenks.blospot.com)
-- Supported languages = English │ Turkish
+- App supported languages = English │ Turkish
 
 # ZapretDPI │ OgnitorenKs
 • ZapretDPI uygulamasının batch script ile arayüzlendirilmiş halidir. ZapretDPI'ın amacı yasaklı adreslere VPN olmadan erişmenizi sağlamasıdır. Normalde bu yasaklar internet servis sağlayıcısının DNS adresinde uygulanır siz DNS adresi değiştirince sorunsuz kullanmaya devam edersiniz. Ancak DNS değiştirme yöntemi tek başına çoğu internet servis sağlayıcısında çalışmıyor. Çünkü her ne kadar DNS adresi değiştirilse bile veriler internet servis sağlayıcınızın sunucuları üzerinden iletiliyor. Sunucularda yapılan "Derin Paket İncelenmesi" yöntemiyle yasaklı siteler engellenmeye devam ediyor. İşte ZapretDPI uygulaması tam olarak burada işimize yarıyor. Derin Paket İncelemesini atlatmak için verileri küçük paketlere bölerek yollar. Derin Paket İncelemesi de ne olduğunu anlayamadığı için yasaklama yapmaz. Böylece sitelere doğrudan erişme imkanınız olur. 

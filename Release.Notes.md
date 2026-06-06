@@ -4,7 +4,14 @@
 -   Mail: ognitorenks@gmail.com
 -   Site: [https://ognitorenks.blospot.com](https://ognitorenks.blospot.com)
 
-<details><summary><B> Versiyon 5.2 ► 25.05.2026 </B></summary>
+<details><summary><B> Versiyon 5.3 ► 06.06.2026 </B></summary>
+
+    • ogni_host.exe uygulamasının Discord ve Roblox domainlerinin IP tespit işlemi hızlandırıldı.
+	• İkinci seçenek olan local mod kaldırıldı. Belirli site yapılarında sorunlar çıkarıyordu.
+	• Genel internete uygula seçeneği tek seçenek olarak bırakıldı.
+	• Eski gereksiz kod bölümleri kaldırıldı.
+
+</details><details><summary><B> Versiyon 5.2 ► 25.05.2026 </B></summary>
 
     • hosts içine yeni discord adresleri eklendi.
 	

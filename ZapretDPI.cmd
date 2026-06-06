@@ -20,7 +20,7 @@ echo off
 chcp 65001
 setlocal enabledelayedexpansion
 cls
-title ZapretDPI_v5.2 │ OgnitorenKs
+title ZapretDPI_v5.3 │ OgnitorenKs
 mode con cols=80 lines=22
 
 REM -------------------------------------------------------------
@@ -102,9 +102,7 @@ if "!Menu_Rota!" EQU "1" (goto Menu_1)
 if "!Menu_Rota!" EQU "NT" (goto Menu_2)
 REM -------------------------------------------------------------
 :Menu_1
-Call :Dil A 5 Language_Menu_!Dil!_4_
 Call :Dil A 3 Language_Menu_!Dil!_4_&Call :Dil A 2 Language_Menu_!Dil!_4_&echo  %R%[32m 1%R%[90m-%R%[33m !LA2!%R%[90m [!LA3!]%R%[0m
-Call :Dil A 4 Language_Menu_!Dil!_4_&Call :Dil A 2 Language_Menu_!Dil!_4_&echo  %R%[32m 2%R%[90m-%R%[33m !LA2!%R%[90m [!LA4!]-%R%[32m !LA5!%R%[0m
 Call :Dil A 2 Language_Sabit_!Dil!_1_&set /p Menu=%R%[32m  ► !LA2! %R%[90m= %R%[0m
 echo.
 if !Menu! EQU 1 (Call :DNS_Menu
@@ -113,25 +111,7 @@ if !Menu! EQU 1 (Call :DNS_Menu
 				 "%Konum%\Bin\!Arch!\ogni_hosts.exe" install
 				 "%Konum%\Bin\!Arch!\nssm.exe" install ZapretDPI "%Konum%\Bin\!Arch!\winws.exe" > NUL 2>&1
 				 "%Konum%\Bin\!Arch!\nssm.exe" set ZapretDPI AppDirectory "%Konum%\Bin\!Arch!" > NUL 2>&1
-				 "%Konum%\Bin\!Arch!\nssm.exe" set ZapretDPI AppParameters --wf-tcp=80,443 --filter-tcp=80,443 --hostlist="%Konum%\Bin\!Arch!\cutoff.txt" --dpi-desync=split --dpi-desync-autottl=2 --dpi-desync-fooling=md5sig --dpi-desync-cutoff=d5 --new --filter-tcp=80,443 --dpi-desync=split --dpi-desync-autottl=2 --dpi-desync-fooling=md5sig > NUL 2>&1
-				 "%Konum%\Bin\!Arch!\nssm.exe" set ZapretDPI DisplayName "Zapret DPI Bypass Service" > NUL 2>&1
-				 "%Konum%\Bin\!Arch!\nssm.exe" set ZapretDPI Description "Advanced DPI bypass tool for OgnitorenKs" > NUL 2>&1
-				 "%Konum%\Bin\!Arch!\nssm.exe" set Start SERVICE_AUTO_START > NUL 2>&1
-				 "%Konum%\Bin\!Arch!\nssm.exe" start ZapretDPI > NUL 2>&1
-				 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient" /f /v "DoHPolicy" /t REG_DWORD /d 2 > NUL 2>&1
-                 Call :Dil A 2 Language_Sabit_!Dil!_2_&sc description "ZapretDPI" "!LA2!" > NUL 2>&1
-                 Call :DNS_Cache_Clear
-                 net start "ZapretDPI" > NUL 2>&1
-                 Call :Dil A 2 Language_Sabit_!Dil!_3_&Call :For_Print %R%[92m  ▼ !LA2! ▼%R%[0m
-                 Call :Bekle 2
-                )
-if !Menu! EQU 2 (Call :DNS_Menu
-                 net stop "ZapretDPI" > NUL 2>&1
-                 sc delete "ZapretDPI" > NUL 2>&1
-				 "%Konum%\Bin\!Arch!\ogni_hosts.exe" install
-				 "%Konum%\Bin\!Arch!\nssm.exe" install ZapretDPI "%Konum%\Bin\!Arch!\winws.exe" > NUL 2>&1
-				 "%Konum%\Bin\!Arch!\nssm.exe" set ZapretDPI AppDirectory "%Konum%\Bin\!Arch!" > NUL 2>&1
-				 "%Konum%\Bin\!Arch!\nssm.exe" set ZapretDPI AppParameters --wf-tcp=80,443 --filter-tcp=80,443 --hostlist="%Konum%\Bin\!Arch!\cutoff.txt" --dpi-desync=split --dpi-desync-autottl=2 --dpi-desync-fooling=md5sig --dpi-desync-cutoff=d2 --new --filter-tcp=80,443 --hostlist="%Konum%\Bin\!Arch!\yasakli.txt" --dpi-desync=split --dpi-desync-autottl=2 --dpi-desync-fooling=md5sig > NUL 2>&1
+				 "%Konum%\Bin\!Arch!\nssm.exe" set ZapretDPI AppParameters --wf-tcp=80,443 --filter-tcp=80,443 --hostlist="%Konum%\Bin\!Arch!\cutoff.txt" --dpi-desync=split --dpi-desync-autottl=2 --dpi-desync-fooling=md5sig --dpi-desync-cutoff=d3 --new --filter-tcp=80,443 --dpi-desync=split --dpi-desync-ttl=3 --dpi-desync-fooling=md5sig --dpi-desync-cutoff=d5 > NUL 2>&1
 				 "%Konum%\Bin\!Arch!\nssm.exe" set ZapretDPI DisplayName "Zapret DPI Bypass Service" > NUL 2>&1
 				 "%Konum%\Bin\!Arch!\nssm.exe" set ZapretDPI Description "Advanced DPI bypass tool for OgnitorenKs" > NUL 2>&1
 				 "%Konum%\Bin\!Arch!\nssm.exe" set Start SERVICE_AUTO_START > NUL 2>&1
@@ -193,65 +173,6 @@ goto :eof
 REM -------------------------------------------------------------
 :For_Print
 echo %*
-goto :eof
-
-REM -------------------------------------------------------------
-:Host_Print
-REM Bu kayıtlar host içine eklenir ve olası hatalar ve gecikmeler önlenir.
-FOR %%k in (
-"162.159.138.232 discord.com"
-"162.159.138.232 www.discord.com"
-"162.159.133.232 cdn.discordapp.com"
-"162.159.135.232 media.discordapp.net"
-"162.159.135.232 images.discordapp.net"
-"162.159.129.233 gateway.discord.gg"
-"162.159.129.233 latency.discord.media"
-"128.116.13.3 clientsettings.roblox.com"
-"128.116.13.3 clientsettingsapi.roblox.com"
-"128.116.13.3 ephemeralcounters.api.roblox.com"
-"128.116.13.3 contentdelivery.roblox.com"
-"128.116.13.3 locale.roblox.com"
-"128.116.13.3 tracing.roblox.com"
-"2.16.16.149 setup.rbxcdn.com"
-"2.16.16.149 setup-aws.rbxcdn.com"
-"128.116.13.3 www.roblox.com"
-"128.116.13.3 api.roblox.com"
-"128.116.13.3 games.roblox.com"
-"128.116.13.3 auth.roblox.com"
-"2.16.16.149 images.rbxcdn.com"
-"2.16.16.149 js.rbxcdn.com"
-) do (
-    "!Konum!\Bin\!Arch!\hosts-editor.exe" add %%k > NUL 2>&1
-)
-goto :eof
-
-REM -------------------------------------------------------------
-:Host_Remove
-FOR %%k in (
-"discord.com"
-"www.discord.com"
-"cdn.discordapp.com"
-"media.discordapp.net"
-"images.discordapp.net"
-"gateway.discord.gg"
-"latency.discord.media"
-"clientsettings.roblox.com"
-"clientsettingsapi.roblox.com"
-"ephemeralcounters.api.roblox.com"
-"contentdelivery.roblox.com"
-"locale.roblox.com"
-"tracing.roblox.com"
-"setup.rbxcdn.com"
-"setup-aws.rbxcdn.com"
-"www.roblox.com"
-"api.roblox.com"
-"games.roblox.com"
-"auth.roblox.com"
-"images.rbxcdn.com"
-"js.rbxcdn.com"
-) do (
-    "!Konum!\Bin\!Arch!\hosts-editor.exe" remove %%k > NUL 2>&1
-)
 goto :eof
 
 REM -------------------------------------------------------------
