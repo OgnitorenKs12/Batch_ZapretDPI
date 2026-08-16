@@ -20,7 +20,7 @@ echo off
 chcp 65001
 setlocal enabledelayedexpansion
 cls
-title ZapretDPI_v5.3 │ OgnitorenKs
+title ZapretDPI_v5.4 │ OgnitorenKs
 mode con cols=80 lines=22
 
 REM -------------------------------------------------------------
@@ -111,7 +111,8 @@ if !Menu! EQU 1 (Call :DNS_Menu
 				 "%Konum%\Bin\!Arch!\ogni_hosts.exe" install
 				 "%Konum%\Bin\!Arch!\nssm.exe" install ZapretDPI "%Konum%\Bin\!Arch!\winws.exe" > NUL 2>&1
 				 "%Konum%\Bin\!Arch!\nssm.exe" set ZapretDPI AppDirectory "%Konum%\Bin\!Arch!" > NUL 2>&1
-				 "%Konum%\Bin\!Arch!\nssm.exe" set ZapretDPI AppParameters --wf-tcp=80,443 --filter-tcp=80,443 --hostlist="%Konum%\Bin\!Arch!\cutoff.txt" --dpi-desync=split --dpi-desync-autottl=2 --dpi-desync-fooling=md5sig --dpi-desync-cutoff=d3 --new --filter-tcp=80,443 --dpi-desync=split --dpi-desync-ttl=3 --dpi-desync-fooling=md5sig --dpi-desync-cutoff=d5 > NUL 2>&1
+				 REM "%Konum%\Bin\!Arch!\nssm.exe" set ZapretDPI AppParameters --wf-tcp=80,443 --filter-tcp=80,443 --hostlist="%Konum%\Bin\!Arch!\cutoff.txt" --dpi-desync=split --dpi-desync-autottl=2 --dpi-desync-fooling=md5sig --dpi-desync-cutoff=d3 --new --filter-tcp=80,443 --dpi-desync=split --dpi-desync-ttl=3 --dpi-desync-fooling=md5sig --dpi-desync-cutoff=d5 > NUL 2>&1
+				 "%Konum%\Bin\!Arch!\nssm.exe" set ZapretDPI AppParameters --wf-tcp=80,443 --filter-tcp=80,443 --hostlist="%Konum%\Bin\!Arch!\cutoff.txt" --dpi-desync=split --dpi-desync-autottl=2 --dpi-desync-fooling=md5sig --dpi-desync-cutoff=d3 --new --filter-tcp=80,443 --dpi-desync=fake --dpi-desync-ttl=3 --dpi-desync-fooling=md5sig --dpi-desync-cutoff=d5 > NUL 2>&1
 				 "%Konum%\Bin\!Arch!\nssm.exe" set ZapretDPI DisplayName "Zapret DPI Bypass Service" > NUL 2>&1
 				 "%Konum%\Bin\!Arch!\nssm.exe" set ZapretDPI Description "Advanced DPI bypass tool for OgnitorenKs" > NUL 2>&1
 				 "%Konum%\Bin\!Arch!\nssm.exe" set Start SERVICE_AUTO_START > NUL 2>&1
